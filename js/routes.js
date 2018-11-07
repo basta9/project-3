@@ -1,7 +1,7 @@
 
 import appSus from './pages/app-sus.cmp.js';
-import emailApp from '../missEmail/cmps/email-app.cmp.js';
-import keepApp from '../missKeep/cmps/keep-app.cmp.js';
+import emailApp from './cmps/missEmail/email-app.cmp.js';
+import keepApp from './cmps/missKeep/keep-app.cmp.js';
 
 
 

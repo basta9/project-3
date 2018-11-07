@@ -1,8 +1,13 @@
 
-
+import noteEdit from './note-edit.cmp.js';
 
 export default {
-    template: `
-   <h1> keep app</h1>
-  `
+  template: `
+    <section class="notes-container">
+
+    </section>
+  `,
+  components: {
+    noteEdit
+  }
 }

@@ -7,7 +7,9 @@ import { utilService } from "../../services/util.service.js";
 
 export default {
   template: `
-   <form @submit="save" class="note-editor">
+    <section class="edit-container">
+      <h2>{{(note.id)? 'Edit Note': 'Add Note'}}</h2>
+        <form @submit="save" class="note-editor">
             <component v-for="(currCmp, idx) in cmps" 
                         :is="currCmp.type" 
                         :data="currCmp.data" 
@@ -15,11 +17,22 @@ export default {
                         @addToDo="addToDo($event, idx)"
                         class="editor-input">
             </component>
-            <button>Save</button>
-    </form>
+            <button>{{(note.id)? 'Save': 'Add'}}</button>
+        </form>
+    </section>
   `,
+  created() {
+    const noteId = this.$route.params.noteId;
+    if (noteId) {
+      keepService.getNoteById(noteId)
+        .then(note => {
+          this.note = note;
+        })
+    }
+  },
   data() {
     return {
+      note: {},
       cmps: [
         {
           type: 'textBox',
@@ -46,12 +59,11 @@ export default {
           }
         },
       ],
-      answers: []
+      answers: [],
     }
   },
   methods: {
     setInput(ev, idx) {
-      console.log('Survey Got ev', idx, ev);
       this.answers[idx] = ev;
     },
     addToDo(todo, idx) {
@@ -63,18 +75,22 @@ export default {
       console.log('todo-add', idx, todo);
     },
     save() {
+      console.log('note', this.note);
       var newNote = {
-        id: utilService.makeId(),
         text: { input: this.answers[0], fontSize: '25px' },
-        bgColor: this.answers[1],
-        img: this.answers[3],
-        todos: this.answers[2],
+        bgColor: (this.answers[1]) ? this.answers[1] : 'rgb(226, 223, 63)',
+        img: (this.answers[3]) ? this.answers[3] : '',
+        todos: (this.answers[2]) ? this.answers[2] : '',
         audio: '',
         map: ''
       };
-
-      this.$emit('newNote', newNote);
-    }
+      //set note id according to add/update
+      (this.note) ? newNote.id = this.note.id : newNote.id = utilService.makeId();
+      keepService.save(newNote)
+        .then(() => {
+          this.$router.push('/keepApp');
+        })
+    },
   },
   components: {
     textBox: editHelpers.textBox,

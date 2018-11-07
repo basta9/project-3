@@ -5,7 +5,6 @@ const NOTES_KEY = 'notes';
 function query() {
     return storageService.load(NOTES_KEY)
         .then(notes => {
-            // debugger
             if (!notes) {
                 notes = _createNotes();
                 storageService.store(NOTES_KEY, notes);
@@ -18,26 +17,26 @@ function _createNotes() {
     return [
         {
             id: utilService.makeId(),
-            text: { input: 'hello', fontSize: '25px' },
-            bgColor: '#232323',
+            text: { input: 'Do today:', fontSize: '25px' },
+            bgColor: 'rgb(226, 223, 63)',
             img: '',
+            todos: ['Do laundry', 'Learn Vue'],
+            audio: '',
+            map: ''
+        },
+        {
+            id: utilService.makeId(),
+            text: { input: '', fontSize: '25px' },
+            bgColor: 'rgb(226, 223, 63)',
+            img: 'https://cdn.vox-cdn.com/thumbor/ZnP9cnjIn60slvybF_34lby1uMk=/0x0:2000x1125/1200x675/filters:focal(840x403:1160x723)/cdn.vox-cdn.com/uploads/chorus_image/image/58203557/171109_06_49_10_5DSR4201.0.jpg',
             todos: {},
             audio: '',
             map: ''
         },
         {
             id: utilService.makeId(),
-            text: { input: 'bye', fontSize: '25px' },
-            bgColor: '#232323',
-            img: '',
-            todos: {},
-            audio: '',
-            map: ''
-        },
-        {
-            id: utilService.makeId(),
-            text: { input: 'cookie', fontSize: '25px' },
-            bgColor: '#232323',
+            text: { input: 'Call Savta', fontSize: '25px' },
+            bgColor: 'rgb(226, 223, 63)',
             img: '',
             todos: {},
             audio: '',
@@ -47,11 +46,17 @@ function _createNotes() {
 }
 
 function save(note) {
-    console.log('new note created');
-
-    storageService.load(NOTES_KEY)
+    return storageService.load(NOTES_KEY)
         .then(notes => {
-            notes.push(note);
+            // Edit
+            if (note.id) {
+                var noteIdx = notes.findIndex(currNote => currNote.id === note.id)
+                notes.splice(noteIdx, 1, note);
+            } else {
+                // Add
+                note.id = utilService.makeId();
+                notes.push(note);
+            }
             return storageService.store(NOTES_KEY, notes);
         });
 }
@@ -64,11 +69,11 @@ function getNoteById(noteId) {
         });
 }
 
-function deleteNote(emailId) {
+function deleteNote(noteId) {
     return storageService.load(NOTES_KEY)
         .then(notes => {
-            var noteId = notes.find(note => note.id === noteId);
-            notes.splice(noteId, 1);
+            var noteIdx = notes.findIndex(note => note.id === noteId);
+            notes.splice(noteIdx, 1);
             return storageService.store(NOTES_KEY, notes);
         });
 }

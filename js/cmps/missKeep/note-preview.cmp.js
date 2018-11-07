@@ -1,26 +1,18 @@
 'use strict';
+import noteTodo from './note-todo.cmp.js';
+
 
 export default {
-    props: [],
-    template: `
-    <section v-if="cmp" class="notes-preview">
-            <component v-for="(currCmp, idx) in cmps" 
-                        :is="currCmp.type" 
-                        :data="currCmp.data" 
-                        @setInput="setInput($event, idx)">
-            </component>
+  props: ['note'],
+  template: `
+    <section class="notes-preview" :style="'background:' + note.bgColor">
+            <p v-if="note.text.input">{{note.text.input}}</p>
+            <img v-if="note.img" :src="note.img" alt="couldnt load you img">
+            <note-todo v-if="note.todos" v-for="todo in note.todos" :todo="todo"></note-todo>
     </section>
   `,
-    data() {
-        return {
-            cmp: null
-        }
-    },
-    created() {
-        eventBus.$on(SET_PREVIEW, preview => {
-            this.cmp = preview;
+  components: {
+    noteTodo
+  }
 
-
-        })
-    }
 }

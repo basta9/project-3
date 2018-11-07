@@ -3,7 +3,7 @@
 const textBox = {
     props: ['data'],
     template: `
-        <div class="row">
+        <div class="input-text">
             <label>
                 {{data.label}}
                 <input type="text" v-model="txt" @input="reportVal" />
@@ -26,7 +26,7 @@ const textBox = {
 const color = {
     props: ['data'],
     template: `
-        <div class="row">
+        <div class="input-color">
             <label>
                 {{data.label}}
                 <input type="color" v-model="color" @input="reportVal" />
@@ -40,7 +40,7 @@ const color = {
     },
     methods: {
         reportVal() {
-            this.$emit('setInput', this.txt)
+            this.$emit('setInput', this.color)
         }
     }
 }
@@ -49,21 +49,21 @@ const color = {
 const img = {
     props: ['data'],
     template: `
-        <div class="row">
+        <div class="input-img">
             <label>
                 {{data.label}}
-                <input type="text" v-model="txt" @input="reportVal" />
+                <input type="text" v-model="link" @input="reportVal" />
             </label>
         </div>
     `,
     data() {
         return {
-            txt: '',
+            link: '',
         }
     },
     methods: {
         reportVal() {
-            this.$emit('setInput', this.txt)
+            this.$emit('setInput', this.link)
         }
     }
 }
@@ -72,21 +72,23 @@ const img = {
 const todos = {
     props: ['data'],
     template: `
-        <div class="row">
+        <div class="input-todo">
             <label>
                 {{data.label}}
-                <input type="text" v-model="txt" @input="reportVal" />
+                <input type="text" v-model="todo"/>
+                <span @click="setToDo">+</span>
             </label>
         </div>
     `,
     data() {
         return {
-            txt: '',
+            todo: '',
         }
     },
     methods: {
-        reportVal() {
-            this.$emit('setInput', this.txt)
+        setToDo() {
+            this.$emit('addToDo', this.todo);
+            this.todo = '';
         }
     }
 }

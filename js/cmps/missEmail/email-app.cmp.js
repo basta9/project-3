@@ -1,27 +1,38 @@
 
-
 import emailBox from './email-box.cmp.js';
+import emailBar from './email-bar.cmp.js';
+import emailFilter from './email-filter.cmp.js';
 
 
 export default {
-    template: `
+  template: `
         <section class="email-app">
             <h1>Email App</h1>
-            <email-box :type="type.inbox"></email-box>
-            <email-box :type="type.sent"></email-box>
-            <email-box :type="type.draft"></email-box>
+            <email-filter @filtered="setFilter"></email-filter>
+            <section class="email-app-container flex">
+            <email-bar @typed="setType"></email-bar>
+            <email-box v-if="selectedType" :type="selectedType" :filter="selecterfilter"></email-box>
+            <div class="empty-list" v-else></div>
+            </section>
         </section>
     `,
-    data() {
-        return {
-            type: {
-              inbox: 'inbox',
-              sent: 'sent',
-              draft: 'draft'
-            }
-        }
-    },
-    components: {
-      emailBox
+  data() {
+    return {
+      selectedType: null,
+      selecterfilter: null
     }
+  },
+  methods: {
+    setType(type) {
+      this.selectedType = type;
+    },
+    setFilter(filter) {
+      this.selecterfilter = filter;
+    },
+  },
+  components: {
+    emailBox,
+    emailBar,
+    emailFilter
+  }
 }

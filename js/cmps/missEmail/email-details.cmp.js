@@ -6,8 +6,8 @@ import {emailService} from '../../services/missEmail/email.service.js';
 export default {
     template: `
  <section class="email-deatails" v-if="email">
-     {{email}}
- <router-link to="/emailApp">Return</router-link>
+         {{email}}
+        <router-link to="/emailApp">Return</router-link>
  </section>
  `, 
  data() {

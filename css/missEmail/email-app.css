@@ -1,0 +1,47 @@
+
+
+.email-app-container {
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid rgb(226, 226, 226);
+    margin-bottom: 10px;
+    height: 100rem;
+    width: 80em;
+}
+
+.flex {
+    display: flex;
+}
+
+.email-app {
+    align-content: center;
+    margin: 20px;
+    text-align: left;
+    height: 100rem;
+    width: 80rem;
+}
+
+.email-bar {
+    flex-direction: column;
+    background-color: rgb(226, 226, 226);
+    width: 30rem;
+}
+
+.email-list {
+    height: 100rem;
+    /* width: 70rem; */
+}
+
+.empty-list {
+    height: 100rem;
+    /* width: 70rem; */
+}
+
+.box-element {
+    margin: 20px;
+}
+
+.email-filter input {
+    margin: 0 auto;
+    width: 30rem;
+}

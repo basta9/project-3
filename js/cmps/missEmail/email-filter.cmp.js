@@ -3,8 +3,7 @@
 export default {
     template:`
     <section class="email-filter">
-        <h3>Search</h3>
-        <input type="text" v-model="filter.bySubject" @input="setFilter" />
+        <input type="text" v-model="filter.bySubject" @input="setFilter" placeholder="Search here..."/>
     </section>
     `,
     data() {
@@ -16,7 +15,7 @@ export default {
     },
     methods : {
         setFilter() {
-            this.$emit('filtered', this.filter);
+            this.$emit('filtered', {...this.filter});
         }
     }
 }

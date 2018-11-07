@@ -28,6 +28,7 @@ function createEmails() {
     return [
         {
             id: utilService.makeId(),
+            from: 'blabla@ggg.com',
             type: 'inbox',
             subject: 'Hey',
             body: `What's up?`,
@@ -35,6 +36,7 @@ function createEmails() {
             sentAt: moment().format('MMMM Do YYYY, hh:mm:ss')
         }, {
             id: utilService.makeId(),
+            from: 'blabla@ggg.com',
             type: 'draft',
             subject: '???',
             body: 'BO',
@@ -42,6 +44,7 @@ function createEmails() {
             sentAt: 'November 1st 2018, 08:23:32'
         }, {
             id: utilService.makeId(),
+            from: 'blabla@ggg.com',
             type: 'inbox',
             subject: 'Lorem ipsum',
             body: `Lorem ipsum dolor sit amet, mea at summo scribentur, 
@@ -53,6 +56,7 @@ function createEmails() {
             sentAt: moment().format('MMMM Do YYYY, hh:mm:ss')
         }, {
             id: utilService.makeId(),
+            from: 'blabla@ggg.com',
             type: 'sent',
             subject: 'Brute instructior',
             body: `In usu brute instructior, mei te ocurreret theophrastus. 

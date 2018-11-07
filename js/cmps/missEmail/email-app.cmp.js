@@ -6,7 +6,7 @@ import emailFilter from './email-filter.cmp.js';
 
 export default {
   template: `
-        <section class="email-app">
+        <section class="email-app flex">
             <h1>Email App</h1>
             <email-filter @filtered="setFilter"></email-filter>
             <section class="email-app-container flex">

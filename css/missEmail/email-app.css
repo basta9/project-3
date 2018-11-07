@@ -2,11 +2,10 @@
 
 .email-app-container {
     flex-direction: row;
-    justify-content: space-between;
     border: 1px solid rgb(226, 226, 226);
-    margin-bottom: 10px;
-    height: 100rem;
-    width: 80em;
+    margin: 10px 0;
+    height: 80em;
+    width: 50em;
 }
 
 .flex {
@@ -14,34 +13,62 @@
 }
 
 .email-app {
-    align-content: center;
-    margin: 20px;
-    text-align: left;
-    height: 100rem;
-    width: 80rem;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    height: 80em;
+    width: 50rem;
+    padding: 20px;
 }
 
 .email-bar {
+    text-align: left;
     flex-direction: column;
     background-color: rgb(226, 226, 226);
-    width: 30rem;
+    width: 15em;
 }
 
 .email-list {
+    flex: 1;
     height: 100rem;
-    /* width: 70rem; */
+}
+
+.email-list ul, li{
+    list-style-type: none;
+    border-bottom: 1px solid rgb(88, 87, 87);
+    width: 35rem;
+    padding-left: 5px;
+    text-align: left;
+}
+
+.email-preview a {
+    text-decoration: none;
+    color: black;
+}
+
+.email-preview li{
+    height: 3rem;
+    margin: 0;
+}
+
+ul {
+    padding: 0;
 }
 
 .empty-list {
+    flex: 1;
+    width: 35rem;
     height: 100rem;
-    /* width: 70rem; */
 }
 
 .box-element {
-    margin: 20px;
+    padding: 20px;
+    border-bottom: 1px solid rgb(88, 87, 87);
+    cursor: pointer;
 }
 
 .email-filter input {
-    margin: 0 auto;
+    align-content: center;
     width: 30rem;
 }

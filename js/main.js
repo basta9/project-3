@@ -6,7 +6,7 @@ import navBar from './pages/nav-bar.cmp.js';
 
 
 Vue.use(VueRouter);
-const myRouter = new VueRouter({routes: myRoutes})
+const myRouter = new VueRouter({ routes: myRoutes })
 
 
 new Vue({

@@ -1,0 +1,38 @@
+
+
+.home{
+    text-align: center;
+    padding: 20px;
+    background: greenyellow;
+}
+
+.home-link-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: auto;
+    width: 80%
+}
+
+.home-link{
+    margin: auto;
+    text-decoration: none;
+}
+
+.home-link:hover{
+opacity: .8;
+cursor: pointer;
+}
+
+.home-link > h3{
+margin: 0;
+color: purple;
+font-size: 25px;
+} 
+
+    .home-link > img{
+    min-width: 50%;
+    height: 150px;
+    max-width: 300px;
+    /* max-height: 300px; */
+}

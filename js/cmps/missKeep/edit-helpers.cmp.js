@@ -45,7 +45,7 @@ const color = {
     }
 }
 
-//Do!
+
 const img = {
     props: ['data'],
     template: `
@@ -68,7 +68,7 @@ const img = {
     }
 }
 
-//DO
+
 const todos = {
     props: ['data'],
     template: `
@@ -93,9 +93,34 @@ const todos = {
     }
 }
 
+const pin = {
+    props: ['data'],
+    template: `
+        <div class="input-pin">
+            <label>
+                {{data.label}}
+                <input type="checkbox" v-model="isPined" @change="setPin"> 
+                <span>📌</span> 
+            </label>
+        </div>
+    `,
+    data() {
+        return {
+            isPined: false
+        }
+    },
+    methods: {
+        setPin() {
+            this.$emit('setPin', this.isPined);
+            this.todo = '';
+        }
+    }
+}
+
 export default {
     textBox,
     color,
     img,
-    todos
+    todos,
+    pin
 }

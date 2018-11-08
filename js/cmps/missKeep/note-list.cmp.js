@@ -14,9 +14,9 @@ export default {
     components: {
         notePreview
     },
-    methods: {
-        editNote(note) {
-            this.$emit('editNote', note);
-        }
-    }
+    // methods: {
+    //     editNote(note) {
+    //         this.$emit('editNote', note);
+    //     }
+    // }
 }

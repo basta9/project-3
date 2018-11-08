@@ -3,9 +3,8 @@
 .email-app-container {
     flex-direction: row;
     border: 1px solid rgb(88, 87, 87);
-    margin: 0 10px 0 0;
+    margin: 0;
     height: 50rem;
-    width: 85rem;
     background-color: rgb(240, 238, 238);
 }
 
@@ -19,7 +18,7 @@
     justify-content: center;
     margin: 0 auto;
     height: 50rem;
-    width: 85rem;
+    width: 90%;
     padding: 20px;
 }
 
@@ -28,31 +27,28 @@
     flex-direction: column;
     border-right: 1px solid rgb(88, 87, 87);
     background-color: rgb(226, 226, 226);
-    width: 15em;
+    width: 10rem;
 }
 
 .email-list {
-    flex: 1;
     height: 100%;
-    background-color: rgb(136, 133, 133);
 }
 
 .email-deatails {
     flex: 1;
-    width: 35rem;
-    height: 100%;
+    padding: 10px;
     border-left:1px solid rgb(88, 87, 87);
 }
 
 
-.email-list ul, li{
+.email-list li{
+    height: 5rem;
     list-style-type: none;
     border-bottom: 1px solid rgb(88, 87, 87);
-    padding: 0 5px;
     text-align: left;
     margin: 0;
+    padding: 5px;
     background-color: rgb(255, 255, 255);
-    padding-top: 10px;
     cursor: pointer;
 }
 
@@ -65,6 +61,7 @@
     height: 3rem;
     margin: 0;
     background-color: rgb(197, 197, 197);
+    border-bottom: 1px solid rgb(88, 87, 87);
 }
 
 .email-preview h4, h6 {
@@ -73,6 +70,7 @@
 
 .email-preview h5 {
     margin: 5px;
+    word-wrap: break-word;
 }
 
 .email-preview:hover {
@@ -84,16 +82,13 @@
 }
 
 ul {
+    flex: 1;
     padding: 0;
     margin: 0;
-    width: 35rem;
 }
 
 .empty-list {
-    flex: 1;
-    width: 35rem;
-    height: 100%;
-    
+    height: 100%;  
 }
 
 
@@ -112,16 +107,17 @@ ul {
 
 .email-filter input {
     align-content: center;
-    width: 33rem;
-    margin-right: 25px;
+    width: 95%;
+    padding: 3px;
+    margin: 0 auto;
     border-radius: 30px;
+    font-size: 1em;
 }
 
 
 .email-bar {
     background-color: rgb(230, 228, 228); 
-    width: 100%;
-    padding: 10px 0 5px 0;
+    padding: 5px 0;
     text-align: right;
     border: 1px solid rgb(226, 226, 226);
     justify-content: space-between;
@@ -130,9 +126,9 @@ ul {
 }
 
 .email-bar h4 {
-    padding: 0 0 0 10px;
     font-size: 30px;
     margin: 0;
+    text-align: left;
 }
 
 :focus {
@@ -145,8 +141,58 @@ ul {
 
 .email-compose {
     flex: 1;
-    width: 35rem;
     height: 100%;
     border-left: 1px solid rgb(88, 87, 87);
     flex-direction: column;
+}
+
+.compose-info {
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 5px 0;
+} 
+
+.compose-info input {
+    width: 90%;
+    font-size: 1em;
+    padding: .2em;
+}
+
+.compose-text-box{
+    height: 70%;
+    justify-content: center;
+    padding-top: .5em;
+}
+.compose-text-box textarea {
+    width: 90%;
+    border: none;
+
+}
+
+.box-bar-width{
+    width: 10rem;
+}
+
+.box-bar-width h4{
+    padding-left: 5px;
+}
+
+.email-list-width {
+    width: 30vw;
+    min-width: 250px;
+}
+
+.email-details-width {
+    flex: 1;
+}
+
+.email-box {
+    flex: 1;
+}
+
+.send-button {
+    margin: 0 auto;
+    margin-top: 10px;
+    width: max-content;
+    padding: 10px;
 }

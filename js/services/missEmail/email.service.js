@@ -29,6 +29,8 @@ function createEmails() {
         {
             id: utilService.makeId(),
             from: 'blabla@ggg.com',
+            to: 'blabla@ggg.com',
+            cc: '',
             type: 'inbox',
             subject: 'Hey',
             body: `What's up?`,
@@ -37,6 +39,8 @@ function createEmails() {
         }, {
             id: utilService.makeId(),
             from: 'blabla@ggg.com',
+            to: 'blabla@ggg.com',
+            cc: '',
             type: 'draft',
             subject: '???',
             body: 'BO',
@@ -45,6 +49,8 @@ function createEmails() {
         }, {
             id: utilService.makeId(),
             from: 'blabla@ggg.com',
+            to: 'blabla@ggg.com',
+            cc: '',
             type: 'inbox',
             subject: 'Lorem ipsum',
             body: `Lorem ipsum dolor sit amet, mea at summo scribentur, 
@@ -57,6 +63,8 @@ function createEmails() {
         }, {
             id: utilService.makeId(),
             from: 'blabla@ggg.com',
+            to: 'blabla@ggg.com',
+            cc: '',
             type: 'sent',
             subject: 'Brute instructior',
             body: `In usu brute instructior, mei te ocurreret theophrastus. 

@@ -11,15 +11,19 @@ export default {
             <email-bar @filtered="setFilter" @composed="setCompose"></email-bar>
             <section class="email-app-container flex">
             <box-bar @typed="setType"></box-bar>
-            <email-box :type="selectedType" :filter="selectedfilter" :compose="composedClicked"></email-box>
+            <email-box :type="selectedType" :filter="selectedfilter" :compose="composedClicked"
+                        @composed="setCompose"></email-box>
             </section>
         </section>
     `,
   data() {
     return {
-      selectedType: null,
+      selectedType: 'inbox',
       selectedfilter: null,
-      composedClicked: null
+      composedClicked: {
+        composeClick: null,
+        composeType: 'new'
+      }
     }
   },
   methods: {
@@ -33,7 +37,9 @@ export default {
       this.selectedEmail = email;
     },
     setCompose(compose) {
-      this.composedClicked = compose;
+      this.composedClicked.composeClick = compose.composeClick;
+      this.composedClicked.composeType = compose.composeType;
+      console.log(this.composedClicked);
     }
   },
   components: {

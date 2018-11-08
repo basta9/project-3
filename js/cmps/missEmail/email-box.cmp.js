@@ -1,6 +1,6 @@
 
 import { emailService } from '../../services/missEmail/email.service.js';
-
+import eventBus, {COMPOSE_CHANGED} from '../../event-bus.js';
 
 import emailList from './email-list.cmp.js';
 import emailDetails from './email-details.cmp.js';
@@ -10,25 +10,29 @@ import emailCompose from './email-compose.cmp.js';
 export default {
     props: ['type', 'filter', 'compose'],
     template: `
-        <section class="email-box flex">
-            <email-list :emails="emails" @selected="selectEmail" @composed="setCompose"></email-list>
-            <email-compose v-if="composeEmail.isComposed"></email-compose>
+        <section class="email-box box-bar-width flex">
+            <email-list :emails="emails" @selected="selectEmail" @composed="$emit('composed', $event)"></email-list>
+            <email-compose v-if="compose.composeClick" :email="compose.composeType === 'new' ? {} : selectedEmail"></email-compose>
             <email-details v-else :email="selectedEmail" @selected="selectEmail" ></email-details>
         </section>
     `,
     data() {
         return {
             emails: [],
-            selectedEmail: null,
+            selectedEmail: {},
             selectedType: null,
             composeEmail: {
-                isComposed: false,
+                composeClick: false,
                 composeType: 'new'
             }
         }
     },
     created() {
         this.showEmail();
+            eventBus.$on(COMPOSE_CHANGED, compose =>{
+                this.composeEmail = compose;
+                this.$emit('composed', compose);
+            })
     },
     watch: {
         type() {
@@ -37,10 +41,9 @@ export default {
         filter() {
             this.showEmail();
         },
-        compose() {
-            this.composeEmail = this.compose;
-            this.setCompose(this.composeEmail)
-        }
+        // compose() {
+        //     this.setCompose(this.compose);
+        // },
     },
     methods: {
         selectEmail(email) {
@@ -54,7 +57,9 @@ export default {
             this.selectedType = type;
         },
         setCompose(compose) {
-            this.composeEmail = compose;
+            // console.log(compose)
+            // this.composeEmail.composeClick = compose.composeClick;
+            // this.composeEmail.composeType = compose.composeType;
         }
     },
 

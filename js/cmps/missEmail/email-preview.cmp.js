@@ -11,7 +11,7 @@ export default {
         <h6>{{sentAt}}</h6>
         </div>
         <h5>{{email.subject}}</h5>
-        <h5>{{email.body.slice(0,90)}}<span v-if="email.body.length > 90"> ...</span></h5>
+        <h5>{{email.body.slice(0,70)}}<span v-if="email.body.length > 70"> ...</span></h5>
         </li>
         `, 
     computed: {

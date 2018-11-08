@@ -7,20 +7,24 @@ import emailFilter from './email-filter.cmp.js';
 export default {
     props: ['email'],
     template: `
-        <section class="email-bar flex">
-        <h4>Email</h4>
+        <section class="email-bar email-app-width flex">
+        <div class="box-bar-width"><h4>Email</h4></div>
+        <div class="email-list-width">
         <email-filter @filtered="setFilter"></email-filter>
+        </div>
+        <div class="email-details-width">
         <button @click="composeEmail('reply')">Reply</button>
         <button @click="composeEmail('new')">New</button>
+        </div>
         </section>
         `, 
         data() {
             return {
                 selectedfilter: null,
-                composed: {
-                    isComposed: false,
-                    composeType: 'new'
-                }
+                // compEmail: {
+                //     composeClick: false,
+                //     composeType: ''
+                // }
             }
         },
     computed: {
@@ -32,7 +36,9 @@ export default {
             eventBus.$emit(TYPE_CHANGED, {...type});
         },
         composeEmail(composeType){
-            this.$emit('composed', {isComposed: !this.isComposed, composeType});
+            // console.log({composeClick: !this.compEmail.composeClick, composeType})
+            this.$emit('composed', {composeClick: true, composeType});
+            // eventBus.$emit(COMPOSE_CHANGED, {...{composeClick: !this.compEmail.composeClick, composeType}});
         },
         setFilter(filter) {
             this.selectedfilter = filter;

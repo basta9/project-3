@@ -1,23 +1,30 @@
 
-import {emailService} from '../../services/missEmail/email.service.js';
+import { emailService } from '../../services/missEmail/email.service.js';
 
 
 import emailList from './email-list.cmp.js';
 import emailDetails from './email-details.cmp.js';
+import emailCompose from './email-compose.cmp.js';
 // import emailStatus from './email-status.cmp.js';
 
 export default {
-    props: ['type', 'filter'],
+    props: ['type', 'filter', 'compose'],
     template: `
         <section class="email-box flex">
-            <email-details :email="selectedEmail"></email-details>
-            <email-list :emails="emails" @selected="selectEmail"></email-list>
+            <email-list :emails="emails" @selected="selectEmail" @composed="setCompose"></email-list>
+            <email-compose v-if="composeEmail.isComposed"></email-compose>
+            <email-details v-else :email="selectedEmail" @selected="selectEmail" ></email-details>
         </section>
     `,
     data() {
         return {
             emails: [],
             selectedEmail: null,
+            selectedType: null,
+            composeEmail: {
+                isComposed: false,
+                composeType: 'new'
+            }
         }
     },
     created() {
@@ -25,24 +32,35 @@ export default {
     },
     watch: {
         type() {
-          this.showEmail();
+            this.showEmail();
         },
         filter() {
-          this.showEmail();
+            this.showEmail();
+        },
+        compose() {
+            this.composeEmail = this.compose;
+            this.setCompose(this.composeEmail)
         }
-      },
-    methods: {
-        selectEmail(email){
-          this.selectedEmail = email;
-      },
-      showEmail() {
-        emailService.query(this.type, this.filter)
-        .then(emails => this.emails = emails)
-      }
     },
-    
+    methods: {
+        selectEmail(email) {
+            this.selectedEmail = email;
+        },
+        showEmail() {
+            emailService.query(this.type, this.filter)
+                .then(emails => this.emails = emails)
+        },
+        setType(type) {
+            this.selectedType = type;
+        },
+        setCompose(compose) {
+            this.composeEmail = compose;
+        }
+    },
+
     components: {
-      emailList,
-      emailDetails
+        emailList,
+        emailDetails,
+        emailCompose
     }
 }

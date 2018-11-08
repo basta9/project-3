@@ -14,7 +14,8 @@ export default {
     `,
     methods: {
         selectEmail(email){
-            this.$emit('selected', email);
+            this.$emit('selected', {...email});
+            this.$emit('composed', false);
         }
     },
     components: {

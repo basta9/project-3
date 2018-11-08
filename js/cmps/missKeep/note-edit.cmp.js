@@ -3,7 +3,8 @@
 import editHelpers from './edit-helpers.cmp.js';
 import keepService from '../../services/missKeep/keep.service.js';
 import { utilService } from "../../services/util.service.js";
-// import eventBus, { SET_PREVIEW } from '../event-bus.js'
+// import eventBus from '../../event-bus.js';
+// import eventBus, { PIN_SET } from '../../event-bus.js'
 
 export default {
   template: `
@@ -15,6 +16,7 @@ export default {
                         :data="currCmp.data" 
                         @setInput="setInput($event, idx)"
                         @addToDo="addToDo($event, idx)"
+                        @setPin="setIfPined($event, idx)"
                         class="editor-input">
             </component>
             <button>{{(note.id)? 'Save': 'Add'}}</button>
@@ -73,6 +75,12 @@ export default {
             label: 'Link for Image:',
           }
         },
+        {
+          type: 'pin',
+          data: {
+            label: 'Pin Note:',
+          }
+        },
       ],
       answers: [],
     }
@@ -81,17 +89,21 @@ export default {
     setInput(ev, idx) {
       this.answers[idx] = ev;
     },
+    setIfPined(isPined, idx) {
+      this.answers[idx] = isPined;
+    },
     addToDo(todo, idx) {
       if (!this.answers[idx]) {
-        this.answers[idx] = [todo];
+        this.answers[idx] = [{ text: todo, isDone: false }];
       } else {
-        this.answers[idx].push(todo);
+        this.answers[idx].push({ text: todo, isDone: false });
       }
       console.log('todo-add', idx, todo);
     },
     save() {
       console.log('note', this.note);
       var newNote = {
+        isPined: this.answers[4],
         text: { input: this.answers[0], fontSize: '25px' },
         bgColor: (this.answers[1]) ? this.answers[1] : '',
         img: (this.answers[3]) ? this.answers[3] : '',
@@ -115,5 +127,6 @@ export default {
     color: editHelpers.color,
     todo: editHelpers.todos,
     imgLink: editHelpers.img,
+    pin: editHelpers.pin,
   }
 }

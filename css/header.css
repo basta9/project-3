@@ -50,7 +50,7 @@ margin: 0;
     font-size: 25px;
     font-weight: bold;
     background: gray;
-    width: inherit;
+    /* width: inherit; */
     margin: 20px;
 }
 .screen {
@@ -66,10 +66,6 @@ margin: 0;
     transition: opacity .3s;
     }
     
-    body.open .screen{
-    opacity: 1;
-    visibility: visible;
-    }
 .nav-item:hover{
 color: gold;
 }
@@ -112,7 +108,6 @@ body.open .screen{
         transform: none;
         transition: none;
     }
-    
     .nav-item{
         text-decoration: none;
         padding: 0;

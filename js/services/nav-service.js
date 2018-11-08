@@ -2,8 +2,6 @@
 
 
 function toggleMenu(ev) {
-    if (ev) {
-        ev.stopPropagation();
-    }
+    ev.stopPropagation();
     document.body.classList.toggle('open');
 }

@@ -1,6 +1,5 @@
 
-export const REVIEW_ADDED = 'review-added';
-export const BOOK_ADDED = 'book-added';
+export const TYPE_CHANGED = 'type-changed';
 export const DELETE_NOTE = 'delete-note';
 
 

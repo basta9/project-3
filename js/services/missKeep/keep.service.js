@@ -18,7 +18,7 @@ function _createNotes() {
         {
             id: utilService.makeId(),
             text: { input: 'Do today:', fontSize: '25px' },
-            bgColor: 'rgb(226, 223, 63)',
+            bgColor: '',
             img: '',
             todos: ['Do laundry', 'Learn Vue'],
             audio: '',
@@ -27,7 +27,7 @@ function _createNotes() {
         {
             id: utilService.makeId(),
             text: { input: '', fontSize: '25px' },
-            bgColor: 'rgb(226, 223, 63)',
+            bgColor: '',
             img: 'https://cdn.vox-cdn.com/thumbor/ZnP9cnjIn60slvybF_34lby1uMk=/0x0:2000x1125/1200x675/filters:focal(840x403:1160x723)/cdn.vox-cdn.com/uploads/chorus_image/image/58203557/171109_06_49_10_5DSR4201.0.jpg',
             todos: {},
             audio: '',
@@ -36,7 +36,7 @@ function _createNotes() {
         {
             id: utilService.makeId(),
             text: { input: 'Call Savta', fontSize: '25px' },
-            bgColor: 'rgb(226, 223, 63)',
+            bgColor: '',
             img: '',
             todos: {},
             audio: '',

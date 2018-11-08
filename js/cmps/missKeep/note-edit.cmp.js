@@ -18,6 +18,7 @@ export default {
                         class="editor-input">
             </component>
             <button>{{(note.id)? 'Save': 'Add'}}</button>
+            <button type="button" @click="goToList">Note List</button>
         </form>
     </section>
   `,
@@ -29,6 +30,20 @@ export default {
           this.note = note;
         })
     }
+  },
+  mounted() {
+    document.querySelector('body').style.backgroundImage = 'url(../../img/notebook-bg.jpg)';
+    document.querySelector('body').style.height = '100vh';
+    document.querySelector('body').style.backgroundRepeat = 'no-repeat';
+    document.querySelector('body').style.backgroundSize = 'cover';
+    document.querySelector('body').style.minHeight = '650px';
+  },
+  destroyed() {
+    document.querySelector('body').style.backgroundImage = '';
+    document.querySelector('body').style.height = '';
+    document.querySelector('body').style.backgroundRepeat = '';
+    document.querySelector('body').style.backgroundSize = '';
+    document.querySelector('body').style.minHeight = '';
   },
   data() {
     return {
@@ -78,7 +93,7 @@ export default {
       console.log('note', this.note);
       var newNote = {
         text: { input: this.answers[0], fontSize: '25px' },
-        bgColor: (this.answers[1]) ? this.answers[1] : 'rgb(226, 223, 63)',
+        bgColor: (this.answers[1]) ? this.answers[1] : '',
         img: (this.answers[3]) ? this.answers[3] : '',
         todos: (this.answers[2]) ? this.answers[2] : '',
         audio: '',
@@ -91,6 +106,9 @@ export default {
           this.$router.push('/keepApp');
         })
     },
+    goToList() {
+      this.$router.push('/keepApp');
+    }
   },
   components: {
     textBox: editHelpers.textBox,

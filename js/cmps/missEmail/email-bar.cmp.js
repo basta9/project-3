@@ -2,17 +2,18 @@
 
 import eventBus, {TYPE_CHANGED} from '../../event-bus.js';
 import emailFilter from './email-filter.cmp.js';
+import {PAGE_CHANGED} from '../../event-bus.js';
 
 
 export default {
     props: ['email'],
     template: `
         <section class="email-bar email-app-width flex">
-        <div class="box-bar-width"><h4>Email</h4></div>
-        <div class="email-list-width">
+        <div class="email-bar-head box-bar-width"><h4>Email</h4></div>
+        <div class="email-bar-width">
         <email-filter @filtered="setFilter"></email-filter>
         </div>
-        <div class="email-details-width">
+        <div class="email-bar-func">
         <button @click="composeEmail('reply')">Reply</button>
         <button @click="composeEmail('new')">New</button>
         </div>
@@ -21,10 +22,6 @@ export default {
         data() {
             return {
                 selectedfilter: null,
-                // compEmail: {
-                //     composeClick: false,
-                //     composeType: ''
-                // }
             }
         },
     computed: {
@@ -36,9 +33,8 @@ export default {
             eventBus.$emit(TYPE_CHANGED, {...type});
         },
         composeEmail(composeType){
-            // console.log({composeClick: !this.compEmail.composeClick, composeType})
             this.$emit('composed', {composeClick: true, composeType});
-            // eventBus.$emit(COMPOSE_CHANGED, {...{composeClick: !this.compEmail.composeClick, composeType}});
+            eventBus.$emit(PAGE_CHANGED, 'emailCompose');
         },
         setFilter(filter) {
             this.selectedfilter = filter;

@@ -83,16 +83,19 @@ function createEmails() {
 }
 
 
+
 function createEmail(newEmail) {
     return storageService.load(EMAILS_KEY)
         .then( emails => {
-            if (email.id) {
+            if (newEmail.id) {
                 var emailIdx = emails.findIndex(currEmail => currEmail.id === newEmail.id)
                 emails.splice(emailIdx, 1, newEmail);
             } else {
-                email.id = utilService.makeId();
+                newEmail.id = utilService.makeId();
+                console.log(newEmail)
                 emails.push(newEmail);
             }
+            storageService.store(EMAILS_KEY, emails)
             return storageService.store(EMAILS_KEY, emails);
         });
 }

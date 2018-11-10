@@ -1,4 +1,5 @@
 import eventBus, {TYPE_CHANGED} from '../../event-bus.js';
+import { PAGE_CHANGED } from '../../event-bus.js';
 
 
 export default {
@@ -20,6 +21,7 @@ export default {
         setType(type) {
             this.$emit('typed', type);
             eventBus.$emit(TYPE_CHANGED, {...type});
+            eventBus.$emit(PAGE_CHANGED, 'emailList');
         }
     }
 

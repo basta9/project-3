@@ -39,7 +39,6 @@ export default {
     setCompose(compose) {
       this.composedClicked.composeClick = compose.composeClick;
       this.composedClicked.composeType = compose.composeType;
-      console.log(this.composedClicked);
     }
   },
   components: {

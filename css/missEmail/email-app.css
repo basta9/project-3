@@ -1,7 +1,7 @@
 
 
 .email-app-container {
-    flex-direction: row;
+    flex-direction: column;
     border: 1px solid rgb(88, 87, 87);
     margin: 0;
     height: 50rem;
@@ -13,7 +13,6 @@
 }
 
 .email-app {
-    text-align: center;
     flex-direction: column;
     justify-content: center;
     margin: 0 auto;
@@ -24,24 +23,20 @@
 
 .box-bar {
     text-align: left;
-    flex-direction: column;
-    border-right: 1px solid rgb(88, 87, 87);
+    flex-direction: row;
+    border-bottom: 1px solid rgb(88, 87, 87);
     background-color: rgb(226, 226, 226);
-    width: 10rem;
-}
-
-.email-list {
-    height: 100%;
+    height: min-content;
 }
 
 .email-deatails {
     flex: 1;
     padding: 10px;
-    border-left:1px solid rgb(88, 87, 87);
 }
 
 
 .email-list li{
+    box-sizing: border-box;
     height: 5rem;
     list-style-type: none;
     border-bottom: 1px solid rgb(88, 87, 87);
@@ -50,6 +45,8 @@
     padding: 5px;
     background-color: rgb(255, 255, 255);
     cursor: pointer;
+    border-right: none;
+    width: 89.5vw;
 }
 
 .email-preview a {
@@ -62,6 +59,7 @@
     margin: 0;
     background-color: rgb(197, 197, 197);
     border-bottom: 1px solid rgb(88, 87, 87);
+    width: 88vw;
 }
 
 .email-preview h4, h6 {
@@ -91,10 +89,8 @@ ul {
     height: 100%;  
 }
 
-
 .box-element {
-    padding: 20px;
-    border-bottom: 1px solid rgb(88, 87, 87);
+    padding: 5px;
     cursor: pointer;
 }
 
@@ -118,11 +114,10 @@ ul {
 .email-bar {
     background-color: rgb(230, 228, 228); 
     padding: 5px 0;
-    text-align: right;
     border: 1px solid rgb(226, 226, 226);
-    justify-content: space-between;
     border: 1px solid rgb(88, 87, 87);
     border-bottom: none;
+    flex-direction: column;
 }
 
 .email-bar h4 {
@@ -142,7 +137,6 @@ ul {
 .email-compose {
     flex: 1;
     height: 100%;
-    border-left: 1px solid rgb(88, 87, 87);
     flex-direction: column;
 }
 
@@ -150,6 +144,7 @@ ul {
     flex-direction: row;
     justify-content: space-evenly;
     margin: 5px 0;
+    width: 88vw;
 } 
 
 .compose-info input {
@@ -163,6 +158,7 @@ ul {
     justify-content: center;
     padding-top: .5em;
 }
+
 .compose-text-box textarea {
     width: 90%;
     border: none;
@@ -177,14 +173,6 @@ ul {
     padding-left: 5px;
 }
 
-.email-list-width {
-    width: 30vw;
-    min-width: 250px;
-}
-
-.email-details-width {
-    flex: 1;
-}
 
 .email-box {
     flex: 1;
@@ -194,5 +182,120 @@ ul {
     margin: 0 auto;
     margin-top: 10px;
     width: max-content;
+}
+
+.email-bar-head{
+    display: none;
+    margin: 0 auto;
+}
+
+.email-bar-func{
+    padding: 5px;
+}
+
+.email-bar-func button{
+    margin-bottom: 5px;
+}
+
+
+.email-bar-width {
+    width: 100%;
+    /* min-width: 250px; */
+}
+
+.email-list {
+    border-right: none;
+}
+
+.compose-text-button {
+    flex-direction: row;
     padding: 10px;
+}
+
+@media (min-width:800px){
+    .box-bar {
+        text-align: left;
+        flex-direction: column;
+        border-right: 1px solid rgb(88, 87, 87);
+        background-color: rgb(226, 226, 226);
+        width: 10rem;
+        height: 100%;
+    }
+    .email-bar-head {
+        display: block;
+        margin: 0;
+    }
+    .email-app-container {
+        flex-direction: row;
+        border: 1px solid rgb(88, 87, 87);
+        margin: 0;
+        height: 50rem;
+        background-color: rgb(240, 238, 238);
+    }
+    
+    .email-bar {
+        background-color: rgb(230, 228, 228); 
+        padding: 5px 0;
+        text-align: right;
+        border: 1px solid rgb(226, 226, 226);
+        justify-content: end;
+        border: 1px solid rgb(88, 87, 87);
+        border-bottom: none;
+        flex-direction: row;
+    }
+    .email-details-width {
+        flex: 1;
+    }
+    .email-app {
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0 auto;
+        height: 50rem;
+        width: 90%;
+        padding: 20px;
+    }
+
+    .box-element {
+        padding: 20px;
+        cursor: pointer;
+        border-bottom: 1px solid rgb(88, 87, 87);
+    }
+
+    .email-bar-width {
+        width: 36vw;
+        min-width: 250px;
+    }
+    .email-list {
+        border-right: 1px solid rgb(88, 87, 87);
+    }
+
+    .email-list li{
+        box-sizing: content-box;
+        height: 5rem;
+        list-style-type: none;
+        border-bottom: 1px solid rgb(88, 87, 87);
+        text-align: left;
+        margin: 0;
+        padding: 5px;
+        background-color: rgb(255, 255, 255);
+        cursor: pointer;
+        width: 35vw;
+    }
+    .email-preview li {
+        height: 3rem;
+        margin: 0;
+        background-color: rgb(197, 197, 197);
+        border-bottom: 1px solid rgb(88, 87, 87);
+    }
+    .compose-info {
+        flex-direction: row;
+        justify-content: center;
+        margin: 5px auto;
+        width: 34vw;
+    }
+    .empty-list {
+        width: 35; 
+    }
+
 }

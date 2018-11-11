@@ -6,13 +6,12 @@ import emailPreview from './email-preview.cmp.js';
 export default {
     props: ['emails'],
     template: `
-        <section v-if="emails" class="email-list email-list-width">
+        <section class="email-list email-list-width">
             <ul>
-            <email-preview  v-for="email in emails" :email="email" @click.native="selectEmail(email)">
+            <email-preview v-for="email in emails" :email="email" @click.native="selectEmail(email)">
              </email-preview>
             </ul>
         </section>
-        <div v-else="!emails" class="email-list"></div>
     `,
     methods: {
         selectEmail(email){

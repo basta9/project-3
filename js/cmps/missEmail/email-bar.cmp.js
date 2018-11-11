@@ -21,7 +21,7 @@ export default {
         `, 
         data() {
             return {
-                selectedfilter: null,
+                selectedfilter: null
             }
         },
     computed: {

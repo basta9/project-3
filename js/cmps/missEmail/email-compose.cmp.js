@@ -42,7 +42,7 @@ export default {
                 isRead: null,
                 sentAt: ''
             },
-            windowWidth: null,
+            windowWidth: window.innerWidth,
         }
     },
     created() {
@@ -50,6 +50,13 @@ export default {
         eventBus.$on(WINDOW_WIDTH_CHANGED, width => {
             this.windowWidth = width;
             });
+    },
+    mounted() {
+        this.$nextTick(() => {
+          window.addEventListener('resize', () => {
+            this.windowWidth = window.innerWidth;
+        })
+    });
     },
     methods: {
         setCurrEmail() {

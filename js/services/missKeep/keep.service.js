@@ -68,6 +68,8 @@ function _createNotes() {
 }
 
 function save(note) {
+    console.log('Note', note);
+
     return storageService.load(NOTES_KEY)
         .then(notes => {
             // Edit

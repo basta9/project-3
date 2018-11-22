@@ -3,9 +3,25 @@
 
 /* NOTES */
     
+    /* .editor-screen{
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: rgba(98, 98, 98, 0.7);
+        width: 100%;
+        height: 100%;
+        background: black;
+        opacity: .5;
+    } */
+
+    body.editor .screen{
+        opacity: .3;
+        visibility: visible;
+        }
+
     .notes-preview{
         background: rgb(226, 223, 63);
-        background-image: url('../../img/note-lines.png');
+        background-image: url(..\..\img\note-lines.png);
         background-size: cover;
         border: 2px solid black;
         max-width: 230px;
@@ -15,6 +31,11 @@
         -webkit-column-break-inside: avoid;
         page-break-inside: avoid;
         break-inside: avoid;
+    }
+
+    .notes-preview:hover{
+        cursor: pointer;
+        opacity: .8;
     }
                             
     .notes-preview > img{
@@ -92,23 +113,94 @@
     }
     /* EDITOR */
     .note-editor{
-    width: 85%;
+    /* width: 85%; */
     margin: 25px auto;
+
+    background: rgb(226, 223, 63);
+    background-image: url('../../img/note-lines.png');
+    background-size: cover;
+    border: 2px solid black;
+    width: fit-content;
+    /* max-width: 230px; */
+    /* min-width: 210px; */
+    border-radius: 5px;
+    padding: 15px;
+    /* -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid; */
     }
     
+    .img-link{
+        position: absolute;
+        padding: 10px;
+        background: gray;
+        border: 2px solid black;
+        border-radius: 15px;
+    }
+
+    .fade-enter-active, .fade-leave-active {
+        /* font-size: 18px;   */
+        transition: opacity font-size 1s;
+      }
+
+      .fade-enter, .fade-leave-to{
+        font-size: 1px;  
+        opacity: 0;
+      }
+
+    .txt-input{
+        background: transparent;
+        border: none;
+        color: black;
+        font-size: 18px;
+    }
+
+    .txt-color{
+        width: 30px;
+       
+    }
+    
+    .txt-color > input{
+        opacity: 0;
+        width: 25px;
+        position: absolute;
+    }
+ 
+    .todo-icon:hover{
+        cursor: pointer;
+    }
+
+    .todo-icon{
+        font-size: 21px;
+    }
+
+    .img-icon{
+        cursor: pointer;
+        font-size: 23px;
+    }
+    
+    .pin-icon{
+        cursor: pointer;
+        font-size: 23px;
+    }
+
+    .txt-color > input:hover{
+        cursor: pointer;
+    }
     .editor-input{
         margin: 5px;
         color: white;
         font-size: 20px;
+        display: inline;
     }
     
     .note-editor > button{
-        border: none;
-        border-radius: 15px;
-        padding: 8px;
-        font-size: 18px;
-        color: brown;
-        background: moccasin;
+        border: 1.5px solid black;
+        border-radius: 5px;
+        padding: 5px;
+        font-size: 15px;
+        color: white;
+        background: brown;
     }
 
     .note-editor > button:hover{
@@ -145,4 +237,74 @@
         .notes-list{
             column-count: 4;
         }
+    }
+
+
+    /* IN NOTE DESIGN */
+    .note-pin{
+        /* float: right; */
+        position: relative;
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .note-todo{
+        margin-bottom: 15px;
+    }
+    .note-todo > input{
+        background: transparent;
+        border: none;
+    }
+    
+    .note-todo > span{
+        float: right;
+        border-radius: 50%;
+        padding: 1px 6px;
+        font-weight: bold;
+    }
+    
+    .note-todo > span:hover{
+        opacity: .8;
+        cursor: pointer;
+        background: gray;
+    }
+    .note-img > div{
+        float: right;
+        /* background: rgb(199, 63, 63); */
+        border-radius: 50%;
+        padding: 1px 6px;
+        font-weight: bold;
+    }
+
+    .note-img > div:hover{
+        cursor: pointer;
+        opacity: .8;
+        background: gray;
+    }
+
+    
+    .img-link > *{
+        margin-top: 10px;
+        padding: 5px;
+    }
+     
+    .img-link > button{
+        color: white;
+        background: #222222;
+        border: none;
+        padding: 6.5px;
+    }
+
+    .img-link > div{
+        float: right;
+        position: relative;
+        bottom: 10px; 
+        left: 10px; 
+        margin: 0 5px;
+        padding: 4px;
+    }
+    
+    .img-link > div:hover{
+        cursor: pointer;
+        opacity: .8;
     }

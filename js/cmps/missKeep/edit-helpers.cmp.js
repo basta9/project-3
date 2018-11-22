@@ -1,41 +1,30 @@
 'use strict';
 
 const textBox = {
-    props: ['data'],
+    props: ['text'],
     template: `
-        <div class="txt-size">
-            <label>
-                {{data.label}}
-                <input type="text" v-model="txt" @input="reportVal" />
-            </label>
-        </div>
-    `,
-    data() {
-        return {
-            txt: '',
-        }
-    },
+                <textarea type="text" v-model="text" class="txt-input"
+                @input="reportVal" placeholder="Note Text" rows="2" cols="20">
+                </textarea>`,
     methods: {
         reportVal() {
-            this.$emit('setInput', this.txt)
+            this.$emit('setInput', this.text)
         }
     }
 }
 
 
 const color = {
-    props: ['data'],
     template: `
         <div class="txt-color">
-            <label>
-                {{data.label}}
-                <input type="color" v-model="color" @input="reportVal" />
-            </label>
+                <input type="color" title="Note Color" v-model="color" 
+                @input="reportVal" />
+                <span class="color-icon">🎨</span>
         </div>
     `,
     data() {
         return {
-            color: 'black',
+            color: '',
         }
     },
     methods: {
@@ -47,63 +36,51 @@ const color = {
 
 
 const img = {
-    props: ['data'],
     template: `
         <div class="input-img">
-            <label>
-                {{data.label}}
-                <input type="text" v-model="link" @input="reportVal" />
-            </label>
+                    <span class="img-icon" title="Add Image" @click="isShown =!isShown">🖼️</span>
+                    <div class="img-link" v-show="isShown">
+                        <div @click="isShown = false">X</div>
+                        <input type="text" v-model="link" placeholder="Img Link //http:"/>
+                        <button type="button" @click="reportVal">Add</button>
+                    </div>
         </div>
     `,
     data() {
         return {
             link: '',
+            isShown: false
         }
     },
     methods: {
         reportVal() {
             this.$emit('setInput', this.link)
-        }
+        },
     }
 }
 
 
 const todos = {
-    props: ['data'],
     template: `
-        <div class="input-todo">
-            <label>
-                {{data.label}}
-                <input type="text" v-model="todo"/>
-                <span @click="setToDo">+</span>
-            </label>
-        </div>
-    `,
+                <span class="todo-icon" title="Add To-Do" @click="setToDo">✅</span>
+            `,
     data() {
         return {
             todo: '',
+            isShown: false
         }
     },
     methods: {
         setToDo() {
-            this.$emit('addToDo', this.todo);
-            this.todo = '';
+            this.$emit('setInput');
         }
     }
 }
 
 const pin = {
-    props: ['data'],
     template: `
-        <div class="input-pin">
-            <label>
-                {{data.label}}
-                <input type="checkbox" v-model="isPined" @change="setPin"> 
-                <span>📌</span> 
-            </label>
-        </div>
-    `,
+            <span class="pin-icon" title="Pin Note" @click="setPin">📌</span> 
+            `,
     data() {
         return {
             isPined: false
@@ -111,8 +88,7 @@ const pin = {
     },
     methods: {
         setPin() {
-            this.$emit('setPin', this.isPined);
-            this.todo = '';
+            this.$emit('setPin');
         }
     }
 }

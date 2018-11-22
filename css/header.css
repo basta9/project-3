@@ -82,7 +82,7 @@ color: gold;
 }
 
 body.open .screen{
-    opacity: 1;
+    opacity: .5;
     visibility: visible;
     }
     body.open .nav-bar {
